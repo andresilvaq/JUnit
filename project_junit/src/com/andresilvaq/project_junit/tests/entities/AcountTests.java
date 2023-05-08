@@ -1,9 +1,10 @@
-package tests.entities;
+package com.andresilvaq.project_junit.tests.entities;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
-import project_junit.Account;
+import com.andresilvaq.project_junit.entities.Account;
+import com.andresilvaq.project_junit.tests.factory.AccountFactory;
 
 public class AcountTests {
 	 
@@ -15,7 +16,7 @@ public class AcountTests {
 		double amount = 200.0;
 		double expectedValue = 196.0;
 		 
-		Account acc = new Account(1L, 0.0);
+		Account acc = AccountFactory.createEmptyAccount();
 		
 		acc.deposit(amount);
 		
@@ -28,12 +29,12 @@ public class AcountTests {
 	 */
 	public void depositShouldDoNothingWhenNegativeAmount() {
 		double amount = -200.0;
-		double expectedValue = 0;
+		double expectedValue = 100;
 		 
-		Account acc = new Account(1L, 0.0);
+		Account acc = AccountFactory.createAccount(expectedValue);
 		
 		acc.deposit(amount);
 		
-		Assertions.assertEquals(acc.getBalance(), expectedValue); 
+		Assertions.assertEquals(expectedValue, acc.getBalance()); 
 	}
 }

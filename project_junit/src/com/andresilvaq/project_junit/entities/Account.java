@@ -1,4 +1,4 @@
-package project_junit;
+package com.andresilvaq.project_junit.entities;
 
 public class Account {
 	public static double DEPOSIT_FEE_PERCENTAGE = 0.02;
