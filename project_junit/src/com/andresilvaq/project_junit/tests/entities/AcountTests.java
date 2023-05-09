@@ -53,5 +53,21 @@ public class AcountTests {
 		Assertions.assertTrue(expectedValue == acc.getBalance()); 
 		Assertions.assertTrue(result == initialBalance); 
 	}
+
+	@Test
+	/**
+	 * Se o saldo estível disponível deverá diminuir o saldo numa retirada
+	 */
+	public void withdrawShouldDecreaseBalanceWhenSufficientBalance () {
+		double expectedValue = 300.00; 
+		
+		Account acc = AccountFactory.createAccount(800.00);
+		
+		acc.withdraw(500.00);
+		
+		Assertions.assertEquals(expectedValue, acc.getBalance()); 
+		 
+	}
+	
 	
 }
