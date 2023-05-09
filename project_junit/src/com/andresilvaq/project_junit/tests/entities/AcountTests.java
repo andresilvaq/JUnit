@@ -37,4 +37,21 @@ public class AcountTests {
 		
 		Assertions.assertEquals(expectedValue, acc.getBalance()); 
 	}
+	
+	@Test
+	/**
+	 * Valor final 0.0 quando ocorre Retirada Total
+	 */
+	public void fullWithdrawShouldClearBalance () {
+		double expectedValue = 0;
+		double initialBalance = 800.00;
+		 
+		Account acc = AccountFactory.createAccount(initialBalance);
+		
+		double result = acc.fullWithdraw();
+		
+		Assertions.assertTrue(expectedValue == acc.getBalance()); 
+		Assertions.assertTrue(result == initialBalance); 
+	}
+	
 }
