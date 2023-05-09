@@ -39,6 +39,7 @@ public class Account {
 		if (amount > balance) {
 			throw new IllegalArgumentException();
 		}
+		balance -= amount;
 	}
 	
 	public double fullWithdraw () {
