@@ -22,36 +22,44 @@ public class Financing {
 		if(valueInstallment > (income / 2)) {
 			throw new IllegalArgumentException("Valor da parcela maior que metade do salário.");
 		}
-		
+	}
+	
+	public Double entry () {
+		return this.totalAmount * 0.2;
+	}
+	
+	public Double quota() {
+		Double total = this.totalAmount - entry();
+
+		return total / this.months;
 	}
 
 	public Double getTotalAmount() {
 		return totalAmount;
 	}
 
-	public void setTotalAmount(Double totalAmount) {
-		this.totalAmount = totalAmount;
-	}
-
 	public Double getIncome() {
 		return income;
-	}
-
-	public void setIncome(Double income) {
-		this.income = income;
 	}
 
 	public Integer getMonths() {
 		return months;
 	}
 
+	public void setTotalAmount(Double totalAmount) {
+		validateValues(totalAmount, this.income, this.months);
+		this.totalAmount = totalAmount;
+	}
+
+	public void setIncome(Double income) {
+		validateValues(this.totalAmount, income, this.months);
+		this.income = income;
+	}
+
 	public void setMonths(Integer months) {
+		validateValues(this.totalAmount, this.income, months);
 		this.months = months;
 	}
-	
-	public static void main(String [] args) {
-		Financing f1 = 
-				new Financing(100000d, 2000d, 20);
-	}
+
 } 
  
